@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kartoteka"
         mc:Ignorable="d"
-        Title="" Height="400" Width="400"
+        Title="Вход" Height="400" Width="400"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" Icon="/Explorer3_icon-icons.com_55525.png">
+        ResizeMode="NoResize" Icon="img/Explorer3_icon-icons.com_55525.png">
     <Grid>
         <Button x:Name="button1" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,289,0,0" Height="50" Width="140" FontSize="24" FontWeight="Bold" Click="Button_Click">
             <UIElement.RenderTransform>

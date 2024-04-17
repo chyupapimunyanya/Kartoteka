@@ -1,17 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="BAZABBIBLIOTEKAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="id_address" />
+    </Key>
+    <Property Name="id_address" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Address1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Readers" Relationship="Self.FK__Readers__id_addr__52593CB8" FromRole="Address" ToRole="Readers" />
+  </EntityType>
   <EntityType Name="Book_loans">
     <Key>
       <PropertyRef Name="id_book_loan" />
     </Key>
-    <Property Name="id_book_loan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_book_loan" Type="Int32" Nullable="false" />
     <Property Name="id_book" Type="Int32" Nullable="false" />
     <Property Name="id_reader" Type="Int32" Nullable="false" />
     <Property Name="Date_loan" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="admin_id" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Books" Relationship="Self.FK_Book_loans_Books" FromRole="Book_loans" ToRole="Books" />
-    <NavigationProperty Name="Readers" Relationship="Self.FK_Book_loans_Readers" FromRole="Book_loans" ToRole="Readers" />
-    <NavigationProperty Name="Users" Relationship="Self.FK_Book_loans_Users" FromRole="Book_loans" ToRole="Users" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Book_loan__admin__656C112C" FromRole="Book_loans" ToRole="Users" />
+    <NavigationProperty Name="Books" Relationship="Self.FK__Book_loan__id_bo__6383C8BA" FromRole="Book_loans" ToRole="Books" />
+    <NavigationProperty Name="Readers" Relationship="Self.FK__Book_loan__id_re__6477ECF3" FromRole="Book_loans" ToRole="Readers" />
   </EntityType>
   <EntityType Name="Books">
     <Key>
@@ -20,21 +28,41 @@
     <Property Name="id_book" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Author" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Year_publication" Type="Int32" />
+    <Property Name="Year_publication" Type="Int32" Nullable="false" />
     <Property Name="Genre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Book_loans" Relationship="Self.FK_Book_loans_Books" FromRole="Books" ToRole="Book_loans" />
+    <NavigationProperty Name="Book_loans" Relationship="Self.FK__Book_loan__id_bo__6383C8BA" FromRole="Books" ToRole="Book_loans" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="id_phone" />
+    </Key>
+    <Property Name="id_phone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone_number" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Readers" Relationship="Self.FK__Readers__id_phon__534D60F1" FromRole="Contacts" ToRole="Readers" />
   </EntityType>
   <EntityType Name="Readers">
     <Key>
       <PropertyRef Name="id_reader" />
     </Key>
     <Property Name="id_reader" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Date_birth" Type="DateTime" Precision="0" />
-    <Property Name="Adress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Book_loans" Relationship="Self.FK_Book_loans_Readers" FromRole="Readers" ToRole="Book_loans" />
+    <Property Name="First_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date_birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_address" Type="Int32" Nullable="false" />
+    <Property Name="id_phone" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Address" Relationship="Self.FK__Readers__id_addr__52593CB8" FromRole="Readers" ToRole="Address" />
+    <NavigationProperty Name="Book_loans" Relationship="Self.FK__Book_loan__id_re__6477ECF3" FromRole="Readers" ToRole="Book_loans" />
+    <NavigationProperty Name="Contacts" Relationship="Self.FK__Readers__id_phon__534D60F1" FromRole="Readers" ToRole="Contacts" />
+  </EntityType>
+  <EntityType Name="user_name">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="admin_id" Type="Int32" />
+    <Property Name="First_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__user_name__admin__5629CD9C" FromRole="user_name" ToRole="Users" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -43,35 +71,22 @@
     <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="login" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Book_loans" Relationship="Self.FK_Book_loans_Users" FromRole="Users" ToRole="Book_loans" />
+    <NavigationProperty Name="Book_loans" Relationship="Self.FK__Book_loan__admin__656C112C" FromRole="Users" ToRole="Book_loans" />
+    <NavigationProperty Name="user_name" Relationship="Self.FK__user_name__admin__5629CD9C" FromRole="Users" ToRole="user_name" />
   </EntityType>
-  <Association Name="FK_Book_loans_Books">
-    <End Role="Books" Type="Self.Books" Multiplicity="1" />
-    <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
+  <Association Name="FK__Readers__id_addr__52593CB8">
+    <End Role="Address" Type="Self.Address" Multiplicity="1" />
+    <End Role="Readers" Type="Self.Readers" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Books">
-        <PropertyRef Name="id_book" />
+      <Principal Role="Address">
+        <PropertyRef Name="id_address" />
       </Principal>
-      <Dependent Role="Book_loans">
-        <PropertyRef Name="id_book" />
+      <Dependent Role="Readers">
+        <PropertyRef Name="id_address" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Book_loans_Readers">
-    <End Role="Readers" Type="Self.Readers" Multiplicity="1" />
-    <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Readers">
-        <PropertyRef Name="id_reader" />
-      </Principal>
-      <Dependent Role="Book_loans">
-        <PropertyRef Name="id_reader" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Book_loans_Users">
+  <Association Name="FK__Book_loan__admin__656C112C">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
     <ReferentialConstraint>
@@ -83,22 +98,85 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Book_loan__id_bo__6383C8BA">
+    <End Role="Books" Type="Self.Books" Multiplicity="1" />
+    <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="id_book" />
+      </Principal>
+      <Dependent Role="Book_loans">
+        <PropertyRef Name="id_book" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Book_loan__id_re__6477ECF3">
+    <End Role="Readers" Type="Self.Readers" Multiplicity="1" />
+    <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Readers">
+        <PropertyRef Name="id_reader" />
+      </Principal>
+      <Dependent Role="Book_loans">
+        <PropertyRef Name="id_reader" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Readers__id_phon__534D60F1">
+    <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
+    <End Role="Readers" Type="Self.Readers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacts">
+        <PropertyRef Name="id_phone" />
+      </Principal>
+      <Dependent Role="Readers">
+        <PropertyRef Name="id_phone" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__user_name__admin__5629CD9C">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="user_name" Type="Self.user_name" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="user_name">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="BAZABBIBLIOTEKAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Address" EntityType="Self.Address" />
     <EntitySet Name="Book_loans" EntityType="Self.Book_loans" />
     <EntitySet Name="Books" EntityType="Self.Books" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" />
     <EntitySet Name="Readers" EntityType="Self.Readers" />
+    <EntitySet Name="user_name" EntityType="Self.user_name" />
     <EntitySet Name="Users" EntityType="Self.Users" />
-    <AssociationSet Name="FK_Book_loans_Books" Association="Self.FK_Book_loans_Books">
+    <AssociationSet Name="FK__Readers__id_addr__52593CB8" Association="Self.FK__Readers__id_addr__52593CB8">
+      <End Role="Address" EntitySet="Address" />
+      <End Role="Readers" EntitySet="Readers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Book_loan__admin__656C112C" Association="Self.FK__Book_loan__admin__656C112C">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Book_loans" EntitySet="Book_loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Book_loan__id_bo__6383C8BA" Association="Self.FK__Book_loan__id_bo__6383C8BA">
       <End Role="Books" EntitySet="Books" />
       <End Role="Book_loans" EntitySet="Book_loans" />
     </AssociationSet>
-    <AssociationSet Name="FK_Book_loans_Readers" Association="Self.FK_Book_loans_Readers">
+    <AssociationSet Name="FK__Book_loan__id_re__6477ECF3" Association="Self.FK__Book_loan__id_re__6477ECF3">
       <End Role="Readers" EntitySet="Readers" />
       <End Role="Book_loans" EntitySet="Book_loans" />
     </AssociationSet>
-    <AssociationSet Name="FK_Book_loans_Users" Association="Self.FK_Book_loans_Users">
+    <AssociationSet Name="FK__Readers__id_phon__534D60F1" Association="Self.FK__Readers__id_phon__534D60F1">
+      <End Role="Contacts" EntitySet="Contacts" />
+      <End Role="Readers" EntitySet="Readers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__user_name__admin__5629CD9C" Association="Self.FK__user_name__admin__5629CD9C">
       <End Role="Users" EntitySet="Users" />
-      <End Role="Book_loans" EntitySet="Book_loans" />
+      <End Role="user_name" EntitySet="user_name" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

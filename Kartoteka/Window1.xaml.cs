@@ -21,8 +21,6 @@ namespace Kartoteka
     /// </summary>
     public partial class Window1 : Window
     {
-        private DataTable currentTable;
-
         public Window1()
         {
             InitializeComponent();
@@ -42,7 +40,12 @@ namespace Kartoteka
             Window2.Show();
             this.Close();
         }
-    }
-        
-    }
+
+        private void BookBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new Uri("pages/Books1.xaml", UriKind.Relative));
+            Razdel.Text = "Книги";
+        }
+    }       
+}
 

@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище BAZABBIBLIOTEKAModelContainer" CdmEntityContainer="BAZABBIBLIOTEKAEntities">
+    <EntitySetMapping Name="Address">
+      <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="id_address" ColumnName="id_address" />
+          <ScalarProperty Name="Address1" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Book_loans">
       <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Book_loans">
-        <MappingFragment StoreEntitySet="Book loans">
+        <MappingFragment StoreEntitySet="Book_loans">
           <ScalarProperty Name="id_book_loan" ColumnName="id_book_loan" />
           <ScalarProperty Name="id_book" ColumnName="id_book" />
           <ScalarProperty Name="id_reader" ColumnName="id_reader" />
@@ -23,6 +31,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Contacts">
+        <MappingFragment StoreEntitySet="Contacts">
+          <ScalarProperty Name="id_phone" ColumnName="id_phone" />
+          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Readers">
       <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Readers">
         <MappingFragment StoreEntitySet="Readers">
@@ -30,8 +46,18 @@
           <ScalarProperty Name="First_name" ColumnName="First_name" />
           <ScalarProperty Name="Last_name" ColumnName="Last_name" />
           <ScalarProperty Name="Date_birth" ColumnName="Date_birth" />
-          <ScalarProperty Name="Adress" ColumnName="Adress" />
-          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+          <ScalarProperty Name="id_address" ColumnName="id_address" />
+          <ScalarProperty Name="id_phone" ColumnName="id_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_name">
+      <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.user_name">
+        <MappingFragment StoreEntitySet="user_name">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -41,8 +67,6 @@
           <ScalarProperty Name="admin_id" ColumnName="admin_id" />
           <ScalarProperty Name="login" ColumnName="login" />
           <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="first_name" ColumnName="first_name" />
-          <ScalarProperty Name="last_name" ColumnName="last_name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

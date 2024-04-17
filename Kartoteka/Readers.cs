@@ -23,11 +23,13 @@ namespace Kartoteka
         public int id_reader { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
-        public Nullable<System.DateTime> Date_birth { get; set; }
-        public string Adress { get; set; }
-        public string Phone_number { get; set; }
+        public System.DateTime Date_birth { get; set; }
+        public int id_address { get; set; }
+        public int id_phone { get; set; }
     
+        public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book_loans> Book_loans { get; set; }
+        public virtual Contacts Contacts { get; set; }
     }
 }

@@ -25,9 +25,12 @@ namespace Kartoteka
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Book_loans> Book_loans { get; set; }
         public virtual DbSet<Books> Books { get; set; }
+        public virtual DbSet<Contacts> Contacts { get; set; }
         public virtual DbSet<Readers> Readers { get; set; }
+        public virtual DbSet<user_name> user_name { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

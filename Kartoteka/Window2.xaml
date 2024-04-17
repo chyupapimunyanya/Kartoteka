@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kartoteka"
         mc:Ignorable="d"
-        Title="Картотека библиотеки" Height="700" Width="700"
-        WindowStartupLocation="CenterScreen" Icon="/Explorer3_icon-icons.com_55525.png" ResizeMode="NoResize">
+        Title="Картотека библиотеки" Height="700" Width="1000"
+        WindowStartupLocation="CenterScreen" Icon="img/Explorer3_icon-icons.com_55525.png" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="Back" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Click="Back_Click"/>
-        <ListView x:Name="listView" Margin="120,0,-120,0">
+        <Button x:Name="Back" Content="Назад" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10"/>
+        <ListView x:Name="listView" Margin="120,0,0,0">
             <ListView.View>
                 <GridView>
                   

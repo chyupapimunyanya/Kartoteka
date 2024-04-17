@@ -23,7 +23,7 @@ namespace Kartoteka
         public int id_book { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
-        public Nullable<int> Year_publication { get; set; }
+        public int Year_publication { get; set; }
         public string Genre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,194 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|c:\\users\\ezh01\\desktop\\kartoteka\\kartoteka\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|c:\\users\\ezh01\\desktop\\kartoteka\\kartoteka\\pages\\books1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\pages\\books1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|c:\\users\\ezh01\\desktop\\kartoteka\\kartoteka\\pages\\books1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\pages\\books1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|C:\\Users\\ezh01\\Desktop\\Kartoteka\\kartoteka\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|C:\\Users\\ezh01\\Desktop\\Kartoteka\\kartoteka\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|c:\\users\\ezh01\\desktop\\kartoteka\\kartoteka\\bookclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\bookclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|c:\\users\\ezh01\\desktop\\kartoteka\\kartoteka\\window2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\window2.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|c:\\users\\ezh01\\desktop\\kartoteka\\kartoteka\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|c:\\users\\ezh01\\desktop\\kartoteka\\kartoteka\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|C:\\Users\\ezh01\\Desktop\\Kartoteka\\kartoteka\\window2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5D2DAE76-BCEF-47A1-8325-C1B798C6A151}|Kartoteka\\Kartoteka.csproj|solutionrelative:kartoteka\\window2.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\App.config",
+              "RelativeDocumentMoniker": "Kartoteka\\App.config",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\App.config",
+              "RelativeToolTip": "Kartoteka\\App.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAACPAQAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-04-17T18:14:55.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Books1.xaml",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\pages\\Books1.xaml",
+              "RelativeDocumentMoniker": "Kartoteka\\pages\\Books1.xaml",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\pages\\Books1.xaml",
+              "RelativeToolTip": "Kartoteka\\pages\\Books1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-17T18:01:33.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookClass.cs",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\BookClass.cs",
+              "RelativeDocumentMoniker": "Kartoteka\\BookClass.cs",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\BookClass.cs",
+              "RelativeToolTip": "Kartoteka\\BookClass.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T17:13:06.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Books1.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\pages\\Books1.xaml.cs",
+              "RelativeDocumentMoniker": "Kartoteka\\pages\\Books1.xaml.cs",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\pages\\Books1.xaml.cs",
+              "RelativeToolTip": "Kartoteka\\pages\\Books1.xaml.cs",
+              "ViewState": "AQIAALcAAAAAAAAAAAAawNYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T17:05:00.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Kartoteka\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\MainWindow.xaml",
+              "RelativeToolTip": "Kartoteka\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-17T13:44:42.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Kartoteka\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Kartoteka\\MainWindow.xaml.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowBgAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T13:42:20.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Window2.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window2.xaml.cs",
+              "RelativeDocumentMoniker": "Kartoteka\\Window2.xaml.cs",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window2.xaml.cs",
+              "RelativeToolTip": "Kartoteka\\Window2.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T13:37:42.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Window2.xaml",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window2.xaml",
+              "RelativeDocumentMoniker": "Kartoteka\\Window2.xaml",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window2.xaml",
+              "RelativeToolTip": "Kartoteka\\Window2.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-17T13:37:42.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Window1.xaml",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window1.xaml",
+              "RelativeDocumentMoniker": "Kartoteka\\Window1.xaml",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window1.xaml",
+              "RelativeToolTip": "Kartoteka\\Window1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-17T13:37:42.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Window1.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window1.xaml.cs",
+              "RelativeDocumentMoniker": "Kartoteka\\Window1.xaml.cs",
+              "ToolTip": "C:\\Users\\ezh01\\Desktop\\Kartoteka\\Kartoteka\\Window1.xaml.cs",
+              "RelativeToolTip": "Kartoteka\\Window1.xaml.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAewC0AAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T13:37:42.483Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

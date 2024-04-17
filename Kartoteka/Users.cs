@@ -18,15 +18,16 @@ namespace Kartoteka
         public Users()
         {
             this.Book_loans = new HashSet<Book_loans>();
+            this.user_name = new HashSet<user_name>();
         }
     
         public int admin_id { get; set; }
         public string login { get; set; }
         public string password { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book_loans> Book_loans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user_name> user_name { get; set; }
     }
 }
