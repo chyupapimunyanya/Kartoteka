@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище BAZABBIBLIOTEKAModelContainer" CdmEntityContainer="BAZABBIBLIOTEKAEntities">
+    <EntitySetMapping Name="Book_loans">
+      <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Book_loans">
+        <MappingFragment StoreEntitySet="Book loans">
+          <ScalarProperty Name="id_book_loan" ColumnName="id_book_loan" />
+          <ScalarProperty Name="id_book" ColumnName="id_book" />
+          <ScalarProperty Name="id_reader" ColumnName="id_reader" />
+          <ScalarProperty Name="Date_loan" ColumnName="Date_loan" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Books">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="id_book" ColumnName="id_book" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Year_publication" ColumnName="Year_publication" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Readers">
+      <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Readers">
+        <MappingFragment StoreEntitySet="Readers">
+          <ScalarProperty Name="id_reader" ColumnName="id_reader" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Date_birth" ColumnName="Date_birth" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="BAZABBIBLIOTEKAModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

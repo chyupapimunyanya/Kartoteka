@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище BAZABBIBLIOTEKAModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Book loans">
+    <Key>
+      <PropertyRef Name="id_book_loan" />
+    </Key>
+    <Property Name="id_book_loan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_book" Type="int" Nullable="false" />
+    <Property Name="id_reader" Type="int" Nullable="false" />
+    <Property Name="Date_loan" Type="date" Nullable="false" />
+    <Property Name="admin_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="id_book" />
+    </Key>
+    <Property Name="id_book" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Year_publication" Type="int" />
+    <Property Name="Genre" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Readers">
+    <Key>
+      <PropertyRef Name="id_reader" />
+    </Key>
+    <Property Name="id_reader" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date_birth" Type="date" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Phone_number" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Book loans_Books">
+    <End Role="Books" Type="Self.Books" Multiplicity="1" />
+    <End Role="Book loans" Type="Self.Book loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="id_book" />
+      </Principal>
+      <Dependent Role="Book loans">
+        <PropertyRef Name="id_book" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book loans_Readers">
+    <End Role="Readers" Type="Self.Readers" Multiplicity="1" />
+    <End Role="Book loans" Type="Self.Book loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Readers">
+        <PropertyRef Name="id_reader" />
+      </Principal>
+      <Dependent Role="Book loans">
+        <PropertyRef Name="id_reader" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book loans_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Book loans" Type="Self.Book loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="Book loans">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище BAZABBIBLIOTEKAModelContainer">
+    <EntitySet Name="Book loans" EntityType="Self.Book loans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Readers" EntityType="Self.Readers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Book loans_Books" Association="Self.FK_Book loans_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Book loans" EntitySet="Book loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book loans_Readers" Association="Self.FK_Book loans_Readers">
+      <End Role="Readers" EntitySet="Readers" />
+      <End Role="Book loans" EntitySet="Book loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book loans_Users" Association="Self.FK_Book loans_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Book loans" EntitySet="Book loans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BAZABBIBLIOTEKAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Book_loans">
+    <Key>
+      <PropertyRef Name="id_book_loan" />
+    </Key>
+    <Property Name="id_book_loan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_book" Type="Int32" Nullable="false" />
+    <Property Name="id_reader" Type="Int32" Nullable="false" />
+    <Property Name="Date_loan" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="admin_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Books" Relationship="Self.FK_Book_loans_Books" FromRole="Book_loans" ToRole="Books" />
+    <NavigationProperty Name="Readers" Relationship="Self.FK_Book_loans_Readers" FromRole="Book_loans" ToRole="Readers" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Book_loans_Users" FromRole="Book_loans" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="id_book" />
+    </Key>
+    <Property Name="id_book" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Year_publication" Type="Int32" />
+    <Property Name="Genre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book_loans" Relationship="Self.FK_Book_loans_Books" FromRole="Books" ToRole="Book_loans" />
+  </EntityType>
+  <EntityType Name="Readers">
+    <Key>
+      <PropertyRef Name="id_reader" />
+    </Key>
+    <Property Name="id_reader" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date_birth" Type="DateTime" Precision="0" />
+    <Property Name="Adress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book_loans" Relationship="Self.FK_Book_loans_Readers" FromRole="Readers" ToRole="Book_loans" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Book_loans" Relationship="Self.FK_Book_loans_Users" FromRole="Users" ToRole="Book_loans" />
+  </EntityType>
+  <Association Name="FK_Book_loans_Books">
+    <End Role="Books" Type="Self.Books" Multiplicity="1" />
+    <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="id_book" />
+      </Principal>
+      <Dependent Role="Book_loans">
+        <PropertyRef Name="id_book" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_loans_Readers">
+    <End Role="Readers" Type="Self.Readers" Multiplicity="1" />
+    <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Readers">
+        <PropertyRef Name="id_reader" />
+      </Principal>
+      <Dependent Role="Book_loans">
+        <PropertyRef Name="id_reader" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Book_loans_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="Book_loans">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BAZABBIBLIOTEKAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Book_loans" EntityType="Self.Book_loans" />
+    <EntitySet Name="Books" EntityType="Self.Books" />
+    <EntitySet Name="Readers" EntityType="Self.Readers" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Book_loans_Books" Association="Self.FK_Book_loans_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Book_loans" EntitySet="Book_loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_loans_Readers" Association="Self.FK_Book_loans_Readers">
+      <End Role="Readers" EntitySet="Readers" />
+      <End Role="Book_loans" EntitySet="Book_loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Book_loans_Users" Association="Self.FK_Book_loans_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Book_loans" EntitySet="Book_loans" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
