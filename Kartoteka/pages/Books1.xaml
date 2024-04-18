@@ -72,9 +72,6 @@
         Width="170"
         x:Name="saveBtn"
         Click="addBtn_Click"
-        Foreground="White"
-        Background="#FFE40E20"
-        BorderBrush="#FFE40E20"
         FontSize="16"
         Margin="0 15 0 0">Добавить книгу</Button>
         <Button Grid.Row="2"
@@ -84,9 +81,6 @@
         VerticalAlignment="Top"
         x:Name="deleteBtn"
         Click="deleteBtn_Click"
-        Foreground="White"
-        Background="#FFE40E20"
-        BorderBrush="#FFE40E20"
         FontSize="16"
         Margin="0 15 0 0">Удалить</Button>
         <Button Grid.Row="2"
@@ -96,9 +90,6 @@
         HorizontalAlignment="Center"
         VerticalAlignment="Top"
         x:Name="vidachaBtn"
-        Foreground="White"
-        Background="#FFE40E20"
-        BorderBrush="#FFE40E20"
         FontSize="16"
         Margin="0 15 0 0" Click="vidachaBtn_Click">Выдать</Button>
         <Button Grid.Row="2"
@@ -108,10 +99,7 @@
                 Width="100"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                x:Name="updateBtn"                          
-                Foreground="White"
-                Background="#FFE40E20"
-                BorderBrush="#FFE40E20"
+                x:Name="updateBtn"
                 FontSize="16"
                 Click="updateBtn_Click"
                 Margin="0 15 50 0">Обновить</Button>

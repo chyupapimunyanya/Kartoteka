@@ -79,6 +79,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ABOBA.edmx</DependentUpon>
     </Compile>
+    <Compile Include="AddBook.xaml.cs">
+      <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddReader1.xaml.cs">
+      <DependentUpon>AddReader1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Address.cs">
       <DependentUpon>ABOBA.tt</DependentUpon>
     </Compile>
@@ -95,6 +101,12 @@
     <Compile Include="pages\Books1.xaml.cs">
       <DependentUpon>Books1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\BooksLoans1.xaml.cs">
+      <DependentUpon>BooksLoans1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Readers1.xaml.cs">
+      <DependentUpon>Readers1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Readers.cs">
       <DependentUpon>ABOBA.tt</DependentUpon>
     </Compile>
@@ -107,15 +119,14 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window3.xaml.cs">
-      <DependentUpon>Window3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window4.xaml.cs">
-      <DependentUpon>Window4.xaml</DependentUpon>
-    </Compile>
+    <Page Include="AddBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddReader1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,19 +143,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pages\BooksLoans1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\Readers1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window3.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -10,18 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kartoteka
+namespace Kartoteka.pages
 {
     /// <summary>
-    /// Логика взаимодействия для Window4.xaml
+    /// Логика взаимодействия для Readers1.xaml
     /// </summary>
-    public partial class Window4 : Window
+    public partial class Readers1 : Page
     {
-        public Window4()
+        public Readers1()
         {
             InitializeComponent();
+        }
+
+        private void chitsaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddReader1 addReader1 = new AddReader1();
+            addReader1.ShowDialog();
         }
     }
 }

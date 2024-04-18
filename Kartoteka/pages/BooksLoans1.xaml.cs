@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kartoteka
+namespace Kartoteka.pages
 {
     /// <summary>
-    /// Логика взаимодействия для Window3.xaml
+    /// Логика взаимодействия для BooksLoans1.xaml
     /// </summary>
-    public partial class Window3 : Window
+    public partial class BooksLoans1 : Page
     {
-        public Window3()
+        public BooksLoans1()
         {
             InitializeComponent();
         }

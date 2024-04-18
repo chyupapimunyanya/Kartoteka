@@ -139,6 +139,9 @@ namespace Kartoteka.pages
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             //Вызывает окошко с текстбоксами
+            AddBook addBook = new AddBook();
+            addBook.ShowDialog();
+
         }
 
         private void vidachaBtn_Click(object sender, RoutedEventArgs e)

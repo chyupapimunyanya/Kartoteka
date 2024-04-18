@@ -62,7 +62,7 @@
     <Property Name="login" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Book_loan__admin__656C112C">
+  <Association Name="FK__Book_loan__admin__4316F928">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
     <ReferentialConstraint>
@@ -86,7 +86,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Book_loan__id_re__6477ECF3">
+  <Association Name="FK__Book_loan__id_re__4222D4EF">
     <End Role="Readers" Type="Self.Readers" Multiplicity="1" />
     <End Role="Book_loans" Type="Self.Book_loans" Multiplicity="*" />
     <ReferentialConstraint>
@@ -98,7 +98,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Readers__id_addr__52593CB8">
+  <Association Name="FK__Readers__id_addr__44FF419A">
     <End Role="Address" Type="Self.Address" Multiplicity="1" />
     <End Role="Readers" Type="Self.Readers" Multiplicity="*" />
     <ReferentialConstraint>
@@ -110,7 +110,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Readers__id_phon__534D60F1">
+  <Association Name="FK__Readers__id_phon__45F365D3">
     <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
     <End Role="Readers" Type="Self.Readers" Multiplicity="*" />
     <ReferentialConstraint>
@@ -122,7 +122,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__user_name__admin__5629CD9C">
+  <Association Name="FK__user_name__admin__46E78A0C">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="user_name" Type="Self.user_name" Multiplicity="*" />
     <ReferentialConstraint>
@@ -142,7 +142,7 @@
     <EntitySet Name="Readers" EntityType="Self.Readers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="user_name" EntityType="Self.user_name" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Book_loan__admin__656C112C" Association="Self.FK__Book_loan__admin__656C112C">
+    <AssociationSet Name="FK__Book_loan__admin__4316F928" Association="Self.FK__Book_loan__admin__4316F928">
       <End Role="Users" EntitySet="Users" />
       <End Role="Book_loans" EntitySet="Book_loans" />
     </AssociationSet>
@@ -150,19 +150,19 @@
       <End Role="Books" EntitySet="Books" />
       <End Role="Book_loans" EntitySet="Book_loans" />
     </AssociationSet>
-    <AssociationSet Name="FK__Book_loan__id_re__6477ECF3" Association="Self.FK__Book_loan__id_re__6477ECF3">
+    <AssociationSet Name="FK__Book_loan__id_re__4222D4EF" Association="Self.FK__Book_loan__id_re__4222D4EF">
       <End Role="Readers" EntitySet="Readers" />
       <End Role="Book_loans" EntitySet="Book_loans" />
     </AssociationSet>
-    <AssociationSet Name="FK__Readers__id_addr__52593CB8" Association="Self.FK__Readers__id_addr__52593CB8">
+    <AssociationSet Name="FK__Readers__id_addr__44FF419A" Association="Self.FK__Readers__id_addr__44FF419A">
       <End Role="Address" EntitySet="Address" />
       <End Role="Readers" EntitySet="Readers" />
     </AssociationSet>
-    <AssociationSet Name="FK__Readers__id_phon__534D60F1" Association="Self.FK__Readers__id_phon__534D60F1">
+    <AssociationSet Name="FK__Readers__id_phon__45F365D3" Association="Self.FK__Readers__id_phon__45F365D3">
       <End Role="Contacts" EntitySet="Contacts" />
       <End Role="Readers" EntitySet="Readers" />
     </AssociationSet>
-    <AssociationSet Name="FK__user_name__admin__5629CD9C" Association="Self.FK__user_name__admin__5629CD9C">
+    <AssociationSet Name="FK__user_name__admin__46E78A0C" Association="Self.FK__user_name__admin__46E78A0C">
       <End Role="Users" EntitySet="Users" />
       <End Role="user_name" EntitySet="user_name" />
     </AssociationSet>

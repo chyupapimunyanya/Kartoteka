@@ -24,7 +24,6 @@ namespace Kartoteka
         public Window1()
         {
             InitializeComponent();
-
         }
 
         private void LogOutBtn_Click(object sender, RoutedEventArgs e)
@@ -34,17 +33,22 @@ namespace Kartoteka
             this.Close();
         }
 
-        private void Books_Click(object sender, RoutedEventArgs e)
-        {
-            Window2 Window2 = new Window2();
-            Window2.Show();
-            this.Close();
-        }
-
         private void BookBtn_Click(object sender, RoutedEventArgs e)
         {
             frame.NavigationService.Navigate(new Uri("pages/Books1.xaml", UriKind.Relative));
             Razdel.Text = "Книги";
+        }
+
+        private void VidBookBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new Uri("pages/BooksLoans1.xaml", UriKind.Relative));
+            Razdel.Text = "Выданные Книги";
+        }
+
+        private void ChitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new Uri("pages/Readers1.xaml", UriKind.Relative));
+            Razdel.Text = "Читатели";
         }
     }       
 }
