@@ -11,7 +11,7 @@
     <Key>
       <PropertyRef Name="id_book_loan" />
     </Key>
-    <Property Name="id_book_loan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_book_loan" Type="int" Nullable="false" />
     <Property Name="id_book" Type="int" Nullable="false" />
     <Property Name="id_reader" Type="int" Nullable="false" />
     <Property Name="Date_loan" Type="date" Nullable="false" />

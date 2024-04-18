@@ -24,6 +24,7 @@ namespace Kartoteka
         public Window1()
         {
             InitializeComponent();
+            CurrentUserText.Text = UserClass.last_name + " " + UserClass.first_name;
         }
 
         private void LogOutBtn_Click(object sender, RoutedEventArgs e)

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -99,21 +98,21 @@ namespace Kartoteka.pages
                     int BookId = selectedBook.id_book;
                     using (var db = new BAZABBIBLIOTEKAEntities())
                     {
-                        /*if (db.order.Any(o => o.people_id == BookId))
+                        if (db.Book_loans.Any(o => o.id_book == BookId))
                         {
-                            MessageBox.Show("Сначала удалите заказ, оформленный на этого клиента",
+                            MessageBox.Show("Сначала удалите книгу из вкладки выдданных книг",
                                                                 "Ошибка",
                                                                  MessageBoxButton.OK,
                                                                  MessageBoxImage.Error);
-                        }*/
-                        //else
-                        //{
+                        }
+                        else
+                        {
                             
                            Books book = db.Books.FirstOrDefault(p => p.id_book == BookId);
                            
                             db.Books.Remove(book);
                             db.SaveChanges();
-                        //}
+                        }
                     }
                     listView.ItemsSource = null;
                     FillListView();
@@ -134,6 +133,7 @@ namespace Kartoteka.pages
             listView.ItemsSource = null;
             FillListView();
             deleteBtn.IsEnabled = true;
+            saveBtn.IsEnabled = true;
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
@@ -146,7 +146,20 @@ namespace Kartoteka.pages
 
         private void vidachaBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Вызывает окошко с текстбоксами
+            MessageBoxResult result = MessageBox.Show("Вы точно хотите выдать эту книгу?",
+                                                      "Предупреждение",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                BookClass selectedBook = (BookClass)listView.SelectedItem;
+                if (selectedBook != null)
+                {
+                    int bookId = selectedBook.id_book;
+                    BookClassAditional.Title = selectedBook.Title;
+                    BookClassAditional.id_book = bookId;
+                }
+            }
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)

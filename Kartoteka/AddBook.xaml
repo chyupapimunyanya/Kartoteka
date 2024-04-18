@@ -49,7 +49,7 @@
                 x:Name="AddBtn"
                 FontSize="22"
                 Height="40"
-                Content="Внести" Margin="275,0,0,0" FontWeight="Bold"/>
+                Content="Внести" Margin="275,0,0,0" FontWeight="Bold" Click="AddBtn_Click"/>
             <Label x:Name="Title" Content="Название" HorizontalAlignment="Left" Margin="18,10,0,0" VerticalAlignment="Top" Height="25" Width="70"/>
             <Label x:Name="Authr" Content="Автор" HorizontalAlignment="Left" Margin="18,10,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.Column="1"/>
             <Label x:Name="Ypubl" Content="Год публикации" HorizontalAlignment="Left" Margin="18,71,0,0" VerticalAlignment="Top" Height="25" Width="110" Grid.RowSpan="2" Grid.Row="1"/>

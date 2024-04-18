@@ -37,11 +37,18 @@ namespace Kartoteka
             {
                 using (var BD = new BAZABBIBLIOTEKAEntities())
                 {
-                    if (BD.Users.FirstOrDefault(u => u.login == textBox1.Text && u.password == passwordBox.Password) != null)
-                    {
-                        
-                        Window1 mainForm = new Window1();
-                        mainForm.Show();
+                    Users user = BD.Users.FirstOrDefault(u => u.login == textBox1.Text.Trim() && u.password == passwordBox.Password.Trim());
+                    if (user != null)
+                    {   ///Присвоил некоторые данные классу, чтобы использовать их в следующих окнах
+                        UserClass.admin_id = user.admin_id;
+                        user_name user_Name = BD.user_name.FirstOrDefault(un => un.admin_id == UserClass.admin_id);
+                        if (user_Name != null)
+                        {
+                            UserClass.first_name = user_Name.First_name;
+                            UserClass.last_name = user_Name.Last_name;
+                        }
+                        Window1 main = new Window1();
+                        main.Show();
                         this.Close();
                     }
                     else

@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Kartoteka"
         mc:Ignorable="d"
         Title="Картотека библиотеки" Height="700" Width="1400"
+        MinHeight="700"
+        MinWidth="1400"
         WindowStartupLocation="CenterScreen" Icon="img/Explorer3_icon-icons.com_55525.png">
     <Grid>
         <Grid.ColumnDefinitions>

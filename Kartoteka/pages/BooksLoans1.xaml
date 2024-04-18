@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kartoteka.pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="900"
+      d:DesignHeight="450" d:DesignWidth="1000"
       Title="BooksLoans">
 
     <Grid Background="LightBlue">
@@ -19,20 +19,54 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView x:Name="listView1"
-                    Grid.Row="1"
-                    Grid.ColumnSpan="3"
-                    FontSize="18"
-                    Margin="10">
+        <TextBlock x:Name="ChitName"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    FontSize="16"
+                    Margin="10 0 0 0">Читатель:</TextBlock>
+        <TextBlock x:Name="BiblName"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="16"
+            Grid.Column="1">Библиотекарь:</TextBlock>
+        <TextBlock x:Name="BookName"
+    VerticalAlignment="Center"
+    HorizontalAlignment="Center"
+    FontSize="16"
+    Grid.Column="3">Книга:</TextBlock>
+        <Button 
+    Grid.Column="1"
+    Height="40"
+    Width="100"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Bottom"
+    x:Name="addBtn"
+    FontSize="16"
+    Margin="0 0 0 0" Click="addBtn_Click">Выдать</Button>
+        <ListView x:Name="listView"
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                FontSize="18"
+                Margin="10">
         </ListView>
         <Button Grid.Row="2"
-                Grid.Column="1"
-        Height="40"
-        Width="100"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top"
-        x:Name="bookloandeleteBtn"
-        FontSize="16"
-        Margin="0 15 0 0">Удалить</Button>
+    Height="40"
+    Width="100"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Top"
+    x:Name="deleteBtn"
+    Click="deleteBtn_Click"
+    FontSize="16"
+    Margin="0 15 0 0">Удалить</Button>
+        <Button Grid.Row="2"
+            Grid.Column="2"
+            Height="40"
+            Width="100"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            x:Name="updateBtn"
+            FontSize="16"
+            Click="updateBtn_Click"
+            Margin="0 15 50 0">Обновить</Button>
     </Grid>
 </Page>

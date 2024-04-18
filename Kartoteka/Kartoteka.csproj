@@ -89,6 +89,8 @@
       <DependentUpon>ABOBA.tt</DependentUpon>
     </Compile>
     <Compile Include="BookClass.cs" />
+    <Compile Include="BookClassAditional.cs" />
+    <Compile Include="BookLoansClass.cs" />
     <Compile Include="Books.cs">
       <DependentUpon>ABOBA.tt</DependentUpon>
     </Compile>
@@ -107,9 +109,12 @@
     <Compile Include="pages\Readers1.xaml.cs">
       <DependentUpon>Readers1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReaderClass.cs" />
+    <Compile Include="ReaderClassAdditional.cs" />
     <Compile Include="Readers.cs">
       <DependentUpon>ABOBA.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserClass.cs" />
     <Compile Include="Users.cs">
       <DependentUpon>ABOBA.tt</DependentUpon>
     </Compile>

@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="id_book_loan" />
     </Key>
-    <Property Name="id_book_loan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_book_loan" Type="Int32" Nullable="false" />
     <Property Name="id_book" Type="Int32" Nullable="false" />
     <Property Name="id_reader" Type="Int32" Nullable="false" />
     <Property Name="Date_loan" Type="DateTime" Nullable="false" Precision="0" />
