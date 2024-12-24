@@ -36,41 +36,55 @@ namespace Kartoteka.pages
                     Title = b.Title,
                     Author = b.Author,
                     Genre = b.Genre,
-                    Year_publication = b.Year_publication
+                    Year_publication = b.Year_publication,
+                    Copies = b.Copies // Убедитесь, что это свойство присутствует в BookClass
                 }).ToList();
 
                 int i = 1;
                 foreach (var book in bookObjects)
                 {
-                    book.i = i++;
+                    book.i = i++; // Устанавливаем номер книги
                 }
 
                 GridView myGridView = new GridView();
                 myGridView.ColumnHeaderToolTip = "Книги";
 
-                // Установить источник данных для GridView
-                listView.ItemsSource = bookObjects;
-
                 // Создать столбцы для GridView
-                GridViewColumn gvc1 = new GridViewColumn();
-                gvc1.DisplayMemberBinding = new Binding("i");
-                gvc1.Header = "Номер";
+                GridViewColumn gvc1 = new GridViewColumn
+                {
+                    DisplayMemberBinding = new Binding("i"),
+                    Header = "Номер"
+                };
 
-                GridViewColumn gvc2 = new GridViewColumn();
-                gvc2.DisplayMemberBinding = new Binding("Title");
-                gvc2.Header = "Название";
+                GridViewColumn gvc2 = new GridViewColumn
+                {
+                    DisplayMemberBinding = new Binding("Title"),
+                    Header = "Название"
+                };
 
-                GridViewColumn gvc3 = new GridViewColumn();
-                gvc3.DisplayMemberBinding = new Binding("Author");
-                gvc3.Header = "Автор";
+                GridViewColumn gvc3 = new GridViewColumn
+                {
+                    DisplayMemberBinding = new Binding("Author"),
+                    Header = "Автор"
+                };
 
-                GridViewColumn gvc4 = new GridViewColumn();
-                gvc4.DisplayMemberBinding = new Binding("Genre");
-                gvc4.Header = "Жанр";
+                GridViewColumn gvc4 = new GridViewColumn
+                {
+                    DisplayMemberBinding = new Binding("Genre"),
+                    Header = "Жанр"
+                };
 
-                GridViewColumn gvc5 = new GridViewColumn();
-                gvc5.DisplayMemberBinding = new Binding("Year_publication");
-                gvc5.Header = "Год публикации";
+                GridViewColumn gvc5 = new GridViewColumn
+                {
+                    DisplayMemberBinding = new Binding("Year_publication"),
+                    Header = "Год публикации"
+                };
+
+                GridViewColumn gvc6 = new GridViewColumn
+                {
+                    DisplayMemberBinding = new Binding("Copies"), // Изменено на Copies
+                    Header = "Кол-во в наличии" // Изменено на Кол-во в наличии
+                };
 
                 // Добавить столбцы в GridView
                 myGridView.Columns.Add(gvc1);
@@ -78,11 +92,14 @@ namespace Kartoteka.pages
                 myGridView.Columns.Add(gvc3);
                 myGridView.Columns.Add(gvc4);
                 myGridView.Columns.Add(gvc5);
+                myGridView.Columns.Add(gvc6);
 
-                // Установить View для ListView
+                // Установить источник данных для ListView
                 listView.View = myGridView;
+                listView.ItemsSource = bookObjects; // Устанавливаем источник данных
             }
         }
+
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -100,16 +117,16 @@ namespace Kartoteka.pages
                     {
                         if (db.Book_loans.Any(o => o.id_book == BookId))
                         {
-                            MessageBox.Show("Сначала удалите книгу из вкладки выдданных книг",
+                            MessageBox.Show("Сначала удалите книгу из вкладки выданных книг",
                                                                 "Ошибка",
                                                                  MessageBoxButton.OK,
                                                                  MessageBoxImage.Error);
                         }
                         else
                         {
-                            
-                           Books book = db.Books.FirstOrDefault(p => p.id_book == BookId);
-                           
+
+                            Books book = db.Books.FirstOrDefault(p => p.id_book == BookId);
+
                             db.Books.Remove(book);
                             db.SaveChanges();
                         }
@@ -124,6 +141,23 @@ namespace Kartoteka.pages
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
                 }
+            }
+        }
+        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (SearchBox.Text == "Поиск...")
+            {
+                SearchBox.Text = "";
+                SearchBox.Foreground = Brushes.Black; // Устанавливаем цвет текста в черный
+            }
+        }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(SearchBox.Text))
+            {
+                SearchBox.Text = "Поиск...";
+                SearchBox.Foreground = Brushes.Gray; // Устанавливаем цвет текста в серый
             }
         }
 
@@ -146,21 +180,43 @@ namespace Kartoteka.pages
 
         private void vidachaBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Вы точно хотите выдать эту книгу?",
+            MessageBoxResult result = MessageBox.Show("Вы точно хотите выбрать для выдачи эту книгу?",
                                                       "Предупреждение",
                                                       MessageBoxButton.YesNo,
                                                       MessageBoxImage.Warning);
             if (result == MessageBoxResult.Yes)
             {
-                BookClass selectedBook = (BookClass)listView.SelectedItem;
+                BookClass selectedBook = (BookClass)listView.SelectedItem; // Предполагается, что listView содержит список книг
                 if (selectedBook != null)
                 {
+                    // Проверка доступности книги
+                    if (selectedBook.Copies <= 0)
+                    {
+                        MessageBox.Show("Книга недоступна для выдачи.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
                     int bookId = selectedBook.id_book;
                     BookClassAditional.Title = selectedBook.Title;
                     BookClassAditional.id_book = bookId;
+
+                    // Логика выдачи книги
+                    selectedBook.Copies -= 1; // Уменьшаем количество доступных экземпляров на 1
+
+                    // Здесь можно добавить логику для записи в базу данных о выдаче книги.
+                    // Например, сохранить информацию о выдаче в базе данных или в вашей коллекции.
+
+                    MessageBox.Show("Книга выбрана.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, выберите книгу для выдачи.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }
+
+
+
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -228,7 +284,12 @@ namespace Kartoteka.pages
                         break;
                 }
             }
-            SearchBox.Text = "";
+            SearchBox.Text = "Поиск...";
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -27,48 +27,90 @@ namespace Kartoteka
         private void AddreadeerBtn_Click(object sender, RoutedEventArgs e)
         {
             if (NameBox.Text.Trim() == "" ||
-               LastnameCopy.Text.Trim() == "" ||
+                LastnameCopy.Text.Trim() == "" ||
+                PatronymicBox.Text.Trim() == "" ||
                 AdressBox.Text.Trim() == "" ||
-                DateBox.Text.Trim() == "" || NumberBox.Text.Trim() == ""
-                )
+                DateBox.Text.Trim() == "" ||
+                NumberBox.Text.Trim() == "")
+            {
                 MessageBox.Show("Все поля должны быть заполнены",
-                               "Ошибка",
-                               MessageBoxButton.OK,
-                               MessageBoxImage.Error);
+                                "Ошибка",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+            }
             else
             {
                 using (var db = new BAZABBIBLIOTEKAEntities())
                 {
-                    if (!db.Readers.Any(p => p.Last_name == LastnameCopy.Text &&
-                         p.First_name == NameBox.Text &&
-                         p.Date_birth.ToString() == DateBox.Text) &&
-                        !db.Contacts.Any(c => c.Phone_number == NumberBox.Text) &&
-                        !db.Address.Any(a => a.Address1 == AdressBox.Text))
+                    // Преобразуем строку даты в DateTime
+                    DateTime dateOfBirth;
+                    if (!DateTime.TryParse(DateBox.Text.Trim(), out dateOfBirth))
                     {
-                        Contacts contacts = new Contacts();
-                        contacts.Phone_number = NumberBox.Text.Trim();
-                        db.Contacts.Add(contacts);
-                        Address addresses = new Address();
-                        addresses.Address1 = AdressBox.Text.Trim();
-                        db.Address.Add(addresses);
-                        Readers readers = new Readers();
-                        readers.Last_name = LastnameCopy.Text.Trim();
-                        readers.First_name = NameBox.Text.Trim();
-                        readers.Date_birth = Convert.ToDateTime(DateBox.Text.Trim());
+                        MessageBox.Show("Некорректная дата рождения",
+                                        "Ошибка",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
+                        return;
+                    }
+
+                    // Проверяем, существует ли читатель с такими данными
+                    if (!db.Readers.Any(p => p.Last_name == LastnameCopy.Text &&
+                                             p.First_name == NameBox.Text &&
+                                             p.Patronymic == PatronymicBox.Text &&
+                                             p.Date_birth == dateOfBirth))
+                    {
+                        // Проверяем, существует ли контакт с таким номером телефона
+                        Contacts contact = db.Contacts.FirstOrDefault(c => c.Phone_number == NumberBox.Text.Trim());
+                        if (contact == null)
+                        {
+                            // Создание и добавление нового контакта
+                            contact = new Contacts { Phone_number = NumberBox.Text.Trim() };
+                            db.Contacts.Add(contact);
+                            db.SaveChanges(); // Сохраняем контакт, чтобы получить его ID
+                        }
+
+                        // Проверяем, существует ли адрес
+                        Address address = db.Address.FirstOrDefault(a => a.Address1 == AdressBox.Text.Trim());
+                        if (address == null)
+                        {
+                            // Создание и добавление нового адреса
+                            address = new Address { Address1 = AdressBox.Text.Trim() };
+                            db.Address.Add(address);
+                            db.SaveChanges(); // Сохраняем адрес, чтобы получить его ID
+                        }
+
+                        // Создание и добавление нового читателя
+                        Readers readers = new Readers
+                        {
+                            Last_name = LastnameCopy.Text.Trim(),
+                            First_name = NameBox.Text.Trim(),
+                            Patronymic = PatronymicBox.Text.Trim(),
+                            Date_birth = dateOfBirth, // Используем уже преобразованное значение
+                            id_phone = contact.id_phone, // Устанавливаем id_phone
+                            id_address = address.id_address // Устанавливаем id_address
+                        };
+
                         db.Readers.Add(readers);
                         db.SaveChanges();
+
                         MessageBox.Show("Данные успешно сохранены",
                                         "Сохранение",
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Information);
                         this.Close();
                     }
-                    else MessageBox.Show("Такой читатель уже существует",
-                                    "Ошибка",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                    else
+                    {
+                        MessageBox.Show("Такой читатель уже существует",
+                                        "Ошибка",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
+                    }
                 }
             }
         }
+
+
+
     }
 }

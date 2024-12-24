@@ -26,6 +26,7 @@ namespace Kartoteka
         public System.DateTime Date_birth { get; set; }
         public int id_address { get; set; }
         public int id_phone { get; set; }
+        public string Patronymic { get; set; }
     
         public virtual Address Address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

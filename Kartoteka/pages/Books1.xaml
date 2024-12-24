@@ -8,100 +8,97 @@
       d:DesignHeight="450" d:DesignWidth="900"
       Title="Books">
 
-    <Grid Background="LightBlue">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#45A049"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#388E3C"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#4CAF50"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Width" Value="500"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#4CAF50"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Width" Value="150"/>
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#4CAF50"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#E3F2FD">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto" MinWidth="238"/>
+            <ColumnDefinition Width="Auto" MinWidth="100.42"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="SearchBox"
-                    VerticalAlignment="Center"
-                    FontSize="18"
-                    Height="40"
-                    Grid.ColumnSpan="2"
-                    Margin="10,0,290,0"/>
-        <ComboBox Grid.Column="1"
 
-                  VerticalAlignment="Center"
-                  HorizontalAlignment="Center"
-                  IsReadOnly="True"
-                  IsSynchronizedWithCurrentItem="True"
-                  SelectedIndex="0"
-                  x:Name="filterCombo"
-                  Margin="10 0 0 0"
-                  FontSize="18"
-                  Height="40"
-                  VerticalContentAlignment="Center"
-                  Padding="10 0 0 5">
-            <ComboBoxItem>
-                <TextBlock>Название</TextBlock>
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock>Автор</TextBlock>
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock>Год</TextBlock>
-            </ComboBoxItem>
-            <ComboBoxItem>
-                <TextBlock>Жанр</TextBlock>
-            </ComboBoxItem>
+        <Border CornerRadius="5" BorderBrush="#4CAF50" BorderThickness="1" Margin="10,10,23,10">
+            <TextBox x:Name="SearchBox" VerticalAlignment="Center" FontSize="18" Padding="10" Text="Поиск..." GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus"/>
+        </Border>
+
+        <ComboBox x:Name="filterCombo" VerticalAlignment="Center" SelectedIndex="0" Grid.Column="1" Margin="36,0,52,0" Height="42">
+            <ComboBoxItem Content="Название"/>
+            <ComboBoxItem Content="Автор"/>
+            <ComboBoxItem Content="Год"/>
+            <ComboBoxItem Content="Жанр"/>
         </ComboBox>
-        <Button x:Name="SearchBtn"
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                FontSize="18"
-                Width="100"
-                Height="40" Click="SearchBtn_Click">Поиск</Button>
-        <ListView x:Name="listView"
-                    Grid.Row="1"
-                    Grid.ColumnSpan="3"
-                    FontSize="18"
-                    Margin="10">
-        </ListView>
-        <Button Grid.Column="3"
-        Grid.Row="2"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top"
-        Height="40"
-        Width="170"
-        x:Name="saveBtn"
-        Click="addBtn_Click"
-        FontSize="16"
-        Margin="0 15 0 0">Добавить книгу</Button>
-        <Button Grid.Row="2"
-        Height="40"
-        Width="100"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top"
-        x:Name="deleteBtn"
-        Click="deleteBtn_Click"
-        FontSize="16"
-        Margin="0 15 0 0">Удалить</Button>
-        <Button Grid.Row="2"
-        Grid.ColumnSpan ="2"
-        Height="40"
-        Width="100"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top"
-        x:Name="vidachaBtn"
-        FontSize="16"
-        Margin="0 15 0 0" Click="vidachaBtn_Click">Выдать</Button>
-        <Button Grid.Row="2"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Height="40"
-                Width="100"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top"
-                x:Name="updateBtn"
-                FontSize="16"
-                Click="updateBtn_Click"
-                Margin="0 15 50 0">Обновить</Button>
+
+        <Button x:Name="SearchBtn" Click="SearchBtn_Click" Content="Поиск" Grid.Column="2" VerticalAlignment="Center" Height="42" Margin="5,0,5,0" />
+
+        <ListView x:Name="listView" Grid.Row="1" Grid.ColumnSpan="3" Margin="10,10,10,10"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,10,0,10" Width="488">
+            <Button x:Name="saveBtn" Click="addBtn_Click" Content="Добавить книгу" Height="42" Width="153" />
+            <Button x:Name="deleteBtn" Click="deleteBtn_Click" Content="Удалить" Width="72" />
+            <Button x:Name="vidachaBtn" Click="vidachaBtn_Click" Content="Выбрать для выдачи" Height="42" />
+            <Button x:Name="updateBtn" Click="updateBtn_Click" Content="Обновить" />
+        </StackPanel>
     </Grid>
 </Page>

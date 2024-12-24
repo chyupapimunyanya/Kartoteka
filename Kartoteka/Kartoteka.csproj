@@ -106,6 +106,12 @@
     <Compile Include="pages\BooksLoans1.xaml.cs">
       <DependentUpon>BooksLoans1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\LoansFromReaderCard.xaml.cs">
+      <DependentUpon>LoansFromReaderCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ReaderCard.xaml.cs">
+      <DependentUpon>ReaderCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pages\Readers1.xaml.cs">
       <DependentUpon>Readers1.xaml</DependentUpon>
     </Compile>
@@ -149,6 +155,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\BooksLoans1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\LoansFromReaderCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\ReaderCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

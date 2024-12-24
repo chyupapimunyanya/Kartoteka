@@ -57,7 +57,7 @@
     x:Name="deleteBtn"
     Click="deleteBtn_Click"
     FontSize="16"
-    Margin="0 15 0 0">Удалить</Button>
+    Margin="0 15 0 0">Вернуть</Button>
         <Button Grid.Row="2"
             Grid.Column="2"
             Height="40"

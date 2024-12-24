@@ -41,20 +41,24 @@ namespace Kartoteka.pages
                     ReadContacts => ReadContacts.Readers1.id_address,
                     Address => Address.id_address,
                     (ReadContacts, Address) => new { readContacts = ReadContacts, address = Address });
+
                 var readObjects = pca.Select(co => new ReaderClass
                 {
                     id = co.readContacts.Readers1.id_reader,
                     last_name = co.readContacts.Readers1.Last_name,
                     first_name = co.readContacts.Readers1.First_name,
+                    patronymic = co.readContacts.Readers1.Patronymic, // Новое поле
                     phone_number = co.readContacts.Contacts1.Phone_number,
                     Date_birth = co.readContacts.Readers1.Date_birth.ToString("d"),
                     adress = co.address.Address1,
                 }).ToList();
+
                 int i = 1;
                 foreach (var reader1 in readObjects)
                 {
                     reader1.i = i++;
                 }
+
                 GridView myGridView = new GridView();
                 myGridView.ColumnHeaderToolTip = "Читатели";
                 listView.ItemsSource = readObjects;
@@ -65,23 +69,27 @@ namespace Kartoteka.pages
 
                 GridViewColumn gvc2 = new GridViewColumn();
                 gvc2.DisplayMemberBinding = new Binding("last_name");
-                gvc2.Header = "Фамилию";
+                gvc2.Header = "Фамилия";
 
                 GridViewColumn gvc3 = new GridViewColumn();
                 gvc3.DisplayMemberBinding = new Binding("first_name");
                 gvc3.Header = "Имя";
 
                 GridViewColumn gvc4 = new GridViewColumn();
-                gvc4.DisplayMemberBinding = new Binding("phone_number");
-                gvc4.Header = "Номер телефона";
+                gvc4.DisplayMemberBinding = new Binding("patronymic"); // Новый столбец для отчества
+                gvc4.Header = "Отчество";
 
                 GridViewColumn gvc5 = new GridViewColumn();
-                gvc5.DisplayMemberBinding = new Binding("Date_birth");
-                gvc5.Header = "Дата рождения";
+                gvc5.DisplayMemberBinding = new Binding("phone_number");
+                gvc5.Header = "Номер телефона";
 
                 GridViewColumn gvc6 = new GridViewColumn();
-                gvc6.DisplayMemberBinding = new Binding("adress");
-                gvc6.Header = "Адрес";
+                gvc6.DisplayMemberBinding = new Binding("Date_birth");
+                gvc6.Header = "Дата рождения";
+
+                GridViewColumn gvc7 = new GridViewColumn();
+                gvc7.DisplayMemberBinding = new Binding("adress");
+                gvc7.Header = "Адрес";
 
                 myGridView.Columns.Add(gvc1);
                 myGridView.Columns.Add(gvc2);
@@ -89,9 +97,11 @@ namespace Kartoteka.pages
                 myGridView.Columns.Add(gvc4);
                 myGridView.Columns.Add(gvc5);
                 myGridView.Columns.Add(gvc6);
+                myGridView.Columns.Add(gvc7); // Добавьте новый столбец в GridView
                 listView.View = myGridView;
             }
         }
+
 
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
@@ -143,7 +153,7 @@ namespace Kartoteka.pages
 
         private void vidachaBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Вы точно хотите выдать книгу этому читателю?",
+            MessageBoxResult result = MessageBox.Show("Вы точно хотите выбрать читателя для выдачи?",
                                                       "Предупреждение",
                                                       MessageBoxButton.YesNo,
                                                       MessageBoxImage.Warning);
@@ -173,5 +183,68 @@ namespace Kartoteka.pages
             AddReader1 addReader1 = new AddReader1();
             addReader1.ShowDialog();
         }
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void listView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            // Получите выделенный элемент из ListView
+            var selectedReader = listView.SelectedItem as ReaderClass;
+            if (selectedReader != null)
+            {
+                // Создайте и откройте карточку читателя
+                ReaderCard readerCard = new ReaderCard(selectedReader);
+                readerCard.ShowDialog();
+            }
+        }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            saveBtn.IsEnabled = false;
+            deleteBtn.IsEnabled = false;
+            listView.ItemsSource = null; // Очищаем предыдущие результаты
+
+            using (var db = new BAZABBIBLIOTEKAEntities())
+            {
+                var readers = db.Readers.ToList();
+                var readerObjects = readers.Select(r => new ReaderClass
+                {
+                    id = r.id_reader,
+                    last_name = r.Last_name,
+                    first_name = r.First_name,
+                    patronymic = r.Patronymic,
+                    phone_number = r.Contacts != null ? r.Contacts.Phone_number : "Нет данных",
+                }).ToList();
+
+                string searchText = SearchBox.Text.Trim().ToLower();
+
+                var filteredReaders = readerObjects.Where(x =>
+                    x.last_name.ToLower().Contains(searchText) ||
+                    x.first_name.ToLower().Contains(searchText) ||
+                    x.patronymic.ToLower().Contains(searchText) ||
+                    x.phone_number.Contains(searchText)
+                ).ToList();
+
+                // Проверка, найдены ли результаты
+                if (filteredReaders.Count == 0)
+                {
+                    MessageBox.Show("По вашему запросу ничего не найдено.");
+                }
+                else
+                {
+                    int i = 1;
+                    foreach (var reader in filteredReaders)
+                    {
+                        reader.i = i++;
+                    }
+                    listView.ItemsSource = filteredReaders;
+                }
+            }
+
+            SearchBox.Text = ""; // Очищаем поле поиска
+        }
+
     }
 }

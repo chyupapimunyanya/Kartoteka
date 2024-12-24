@@ -1,0 +1,25 @@
+﻿<Window x:Class="Kartoteka.pages.LoansFromReaderCard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kartoteka.pages"
+        mc:Ignorable="d"
+        Title="Выдача книги" Height="400" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Для ListView -->
+            <RowDefinition Height="Auto" />
+            <!-- Для кнопки -->
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="listView" Margin="0,0,0,10" Grid.Row="0" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
+            <Button Content="Выдать книгу" Click="AddBookButton_Click" Width="100" Height="30" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -25,6 +25,7 @@ namespace Kartoteka
         public string Author { get; set; }
         public int Year_publication { get; set; }
         public string Genre { get; set; }
+        public int Copies { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book_loans> Book_loans { get; set; }

@@ -26,6 +26,7 @@
     <Property Name="Author" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="Year_publication" Type="int" Nullable="false" />
     <Property Name="Genre" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Copies" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Contacts">
     <Key>
@@ -44,6 +45,7 @@
     <Property Name="Date_birth" Type="date" Nullable="false" />
     <Property Name="id_address" Type="int" Nullable="false" />
     <Property Name="id_phone" Type="int" Nullable="false" />
+    <Property Name="Patronymic" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="user_name">
     <Key>
@@ -98,7 +100,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Readers__id_addr__52593CB8">
+  <Association Name="FK__user_name__admin__46E78A0C">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="user_name" Type="Self.user_name" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="user_name">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Readers_Address">
     <End Role="Address" Type="Self.Address" Multiplicity="1" />
     <End Role="Readers" Type="Self.Readers" Multiplicity="*" />
     <ReferentialConstraint>
@@ -110,7 +124,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Readers__id_phon__534D60F1">
+  <Association Name="FK_Readers_Contacts">
     <End Role="Contacts" Type="Self.Contacts" Multiplicity="1" />
     <End Role="Readers" Type="Self.Readers" Multiplicity="*" />
     <ReferentialConstraint>
@@ -119,18 +133,6 @@
       </Principal>
       <Dependent Role="Readers">
         <PropertyRef Name="id_phone" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__user_name__admin__5629CD9C">
-    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-    <End Role="user_name" Type="Self.user_name" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="admin_id" />
-      </Principal>
-      <Dependent Role="user_name">
-        <PropertyRef Name="admin_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -154,17 +156,17 @@
       <End Role="Readers" EntitySet="Readers" />
       <End Role="Book_loans" EntitySet="Book_loans" />
     </AssociationSet>
-    <AssociationSet Name="FK__Readers__id_addr__52593CB8" Association="Self.FK__Readers__id_addr__52593CB8">
+    <AssociationSet Name="FK__user_name__admin__46E78A0C" Association="Self.FK__user_name__admin__46E78A0C">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="user_name" EntitySet="user_name" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Readers_Address" Association="Self.FK_Readers_Address">
       <End Role="Address" EntitySet="Address" />
       <End Role="Readers" EntitySet="Readers" />
     </AssociationSet>
-    <AssociationSet Name="FK__Readers__id_phon__534D60F1" Association="Self.FK__Readers__id_phon__534D60F1">
+    <AssociationSet Name="FK_Readers_Contacts" Association="Self.FK_Readers_Contacts">
       <End Role="Contacts" EntitySet="Contacts" />
       <End Role="Readers" EntitySet="Readers" />
-    </AssociationSet>
-    <AssociationSet Name="FK__user_name__admin__5629CD9C" Association="Self.FK__user_name__admin__5629CD9C">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="user_name" EntitySet="user_name" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

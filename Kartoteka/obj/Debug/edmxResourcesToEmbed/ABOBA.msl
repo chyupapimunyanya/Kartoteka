@@ -28,6 +28,7 @@
           <ScalarProperty Name="Author" ColumnName="Author" />
           <ScalarProperty Name="Year_publication" ColumnName="Year_publication" />
           <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Copies" ColumnName="Copies" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -48,6 +49,7 @@
           <ScalarProperty Name="Date_birth" ColumnName="Date_birth" />
           <ScalarProperty Name="id_address" ColumnName="id_address" />
           <ScalarProperty Name="id_phone" ColumnName="id_phone" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

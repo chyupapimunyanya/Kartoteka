@@ -23,6 +23,7 @@ namespace Kartoteka.pages
         public BooksLoans1()
         {
             InitializeComponent();
+            FillListView();
             if (ReaderClassAdditional.id != 0) ChitName.Text = "Читатель: " + ReaderClassAdditional.last_name + " " + ReaderClassAdditional.first_name;
             if (BookClassAditional.id_book != 0) BookName.Text = "Книга: " + BookClassAditional.Title;
             BiblName.Text = "Библиотекарь: " + UserClass.last_name + " " + UserClass.first_name;
@@ -52,7 +53,7 @@ namespace Kartoteka.pages
 
                 var booksObjects = opu.Select(p => new BookLoansClass
                 {
-                    id_book_loan = p.Book_loans1_User_name1_Read1.Book_loans1_User_name1.Book_loans1.id_book,
+                    id_book_loan = p.Book_loans1_User_name1_Read1.Book_loans1_User_name1.Book_loans1.id_book_loan,
                     admin_id = p.Book_loans1_User_name1_Read1.Book_loans1_User_name1.Book_loans1.admin_id,
                     id_book = p.Book_loans1_User_name1_Read1.Book_loans1_User_name1.Book_loans1.id_book,
                     id_reader = p.Book_loans1_User_name1_Read1.Book_loans1_User_name1.Book_loans1.id_reader,
@@ -108,8 +109,57 @@ namespace Kartoteka.pages
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (listView.SelectedItem == null)
+            {
+                MessageBox.Show("Выберите запись для удаления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            var selectedLoan = (BookLoansClass)listView.SelectedItem;
+
+            using (var db = new BAZABBIBLIOTEKAEntities())
+            {
+                try
+                {
+                    // Поиск записи о выдаче книги в базе данных
+                    var bookLoanToDelete = db.Book_loans.FirstOrDefault(bl => bl.id_book_loan == selectedLoan.id_book_loan);
+                    if (bookLoanToDelete != null)
+                    {
+                        // Поиск книги, соответствующей записи о выдаче
+                        var bookToUpdate = db.Books.FirstOrDefault(b => b.id_book == bookLoanToDelete.id_book);
+                        if (bookToUpdate != null)
+                        {
+                            // Увеличение количества доступных экземпляров
+                            bookToUpdate.Copies += 1; // Увеличиваем количество доступных экземпляров
+                        }
+
+                        // Удаление записи о выдаче
+                        db.Book_loans.Remove(bookLoanToDelete);
+                        db.SaveChanges();
+
+                        // Обновление ListView
+                        FillListView();
+
+                        MessageBox.Show("Запись о выдаче книги успешно удалена, количество экземпляров обновлено.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Запись не найдена в базе данных.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка при удалении записи: " + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
+
+
+
+
+
+
+
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -121,24 +171,50 @@ namespace Kartoteka.pages
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (ReaderClassAdditional.id == 0) MessageBox.Show("Выберите читателя",
-                                                "Ошибка",
-                                                 MessageBoxButton.OK,
-                                                 MessageBoxImage.Error);
-            else if(BookClassAditional.id_book == 0) MessageBox.Show("Выберите книгу",
-                                                "Ошибка",
-                                                 MessageBoxButton.OK,
-                                                 MessageBoxImage.Error);
-            else {
-                using(var db = new BAZABBIBLIOTEKAEntities()){
-                    Book_loans book_Loans = new Book_loans();
-                    book_Loans.admin_id = UserClass.admin_id;
-                    book_Loans.id_reader = ReaderClassAdditional.id;
-                    book_Loans.id_book = BookClassAditional.id_book;
-                    book_Loans.Date_loan = DateTime.Now;
-                    db.Book_loans.Add(book_Loans);
-                    db.SaveChanges();
+            // Проверка выбора читателя и книги
+            if (ReaderClassAdditional.id == 0)
+            {
+                MessageBox.Show("Выберите читателя", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else if (BookClassAditional.id_book == 0)
+            {
+                MessageBox.Show("Выберите книгу", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            using (var db = new BAZABBIBLIOTEKAEntities())
+            {
+                // Создаем новую запись о выдаче книги
+                Book_loans book_Loans = new Book_loans
+                {
+                    admin_id = UserClass.admin_id,
+                    id_reader = ReaderClassAdditional.id,
+                    id_book = BookClassAditional.id_book,
+                    Date_loan = DateTime.Now
+                };
+
+                // Добавляем запись о выдаче в базу данных
+                db.Book_loans.Add(book_Loans);
+
+                // Обновляем количество доступных экземпляров книги
+                var bookToUpdate = db.Books.FirstOrDefault(b => b.id_book == BookClassAditional.id_book);
+                if (bookToUpdate != null)
+                {
+                    if (bookToUpdate.Copies > 0) // Проверка наличия экземпляров
+                    {
+                        bookToUpdate.Copies -= 1; // Уменьшаем количество доступных экземпляров
+                    }
+                    else
+                    {
+                        MessageBox.Show("Нет доступных экземпляров книги.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
                 }
+
+                // Сохраняем изменения в базе данных
+                db.SaveChanges();
+                FillListView(); // Обновляем список
             }
         }
     }

@@ -20,12 +20,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ListView x:Name="listView"
-                Grid.Row="1"
                 Grid.ColumnSpan="3"
                 FontSize="18"
-                Margin="10">
-        </ListView>
-        <Button Grid.Column="3"
+                Margin="10,90,10,120"
+                  MouseDoubleClick="listView_MouseDoubleClick" Grid.RowSpan="3"/>
+        <Button Grid.Column="2"
     Grid.Row="2"
     HorizontalAlignment="Center"
     VerticalAlignment="Top"
@@ -34,7 +33,7 @@
     x:Name="saveBtn"
     Click="addBtn_Click"
     FontSize="16"
-    Margin="0 15 0 0">Добавить читателя</Button>
+    Margin="0,100,0,0">Добавить читателя</Button>
         <Button Grid.Row="2"
     Height="40"
     Width="100"
@@ -43,26 +42,57 @@
     x:Name="deleteBtn"
     Click="deleteBtn_Click"
     FontSize="16"
-    Margin="0 15 0 0">Удалить</Button>
+    Margin="0,100,0,0">Удалить</Button>
         <Button Grid.Row="2"
-    Grid.ColumnSpan ="2"
     Height="40"
     Width="100"
-    HorizontalAlignment="Center"
+    HorizontalAlignment="Left"
     VerticalAlignment="Top"
     x:Name="vidachaBtn"
     FontSize="16"
-    Margin="0 15 0 0" Click="vidachaBtn_Click">Выбрать</Button>
+    Margin="0,100,0,0" Click="vidachaBtn_Click" Grid.Column="1">Выбрать для выдачи</Button>
         <Button Grid.Row="2"
             Grid.Column="1"
-            Grid.ColumnSpan="2"
             Height="40"
             Width="100"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             x:Name="updateBtn"
             FontSize="16"
             Click="updateBtn_Click"
-            Margin="0 15 50 0">Обновить</Button>
+            Margin="166,100,0,0">Обновить</Button>
+        <TextBox x:Name="SearchBox"
+            VerticalAlignment="Top"
+            FontSize="18"
+            Height="40"
+            Grid.ColumnSpan="2"
+            Margin="10,35,223,0"/>
+        <ComboBox Grid.Column="1"
+
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            IsReadOnly="True"
+            IsSynchronizedWithCurrentItem="True"
+            SelectedIndex="0"
+            x:Name="filterCombo"
+            Margin="0,35,0,0"
+            FontSize="18"
+            Height="40"
+            VerticalContentAlignment="Center"
+            Padding="10 0 0 5">
+            <ComboBoxItem>
+                <TextBlock><Run Text="ФИО"/></TextBlock>
+            </ComboBoxItem>
+            <ComboBoxItem>
+            <TextBlock><Run Text="Номер телефона"/></TextBlock>
+            </ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="SearchBtn"
+            Grid.Column="1"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            FontSize="18"
+            Width="100"
+            Height="40" Click="SearchBtn_Click" Content="Поиск" Margin="266,35,0,0" Grid.ColumnSpan="2"/>
     </Grid>
 </Page>

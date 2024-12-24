@@ -54,6 +54,12 @@
             <Label x:Name="Authr" Content="Автор" HorizontalAlignment="Left" Margin="18,10,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.Column="1"/>
             <Label x:Name="Ypubl" Content="Год публикации" HorizontalAlignment="Left" Margin="18,71,0,0" VerticalAlignment="Top" Height="25" Width="110" Grid.RowSpan="2" Grid.Row="1"/>
             <Label x:Name="Genr" Content="Жанр" HorizontalAlignment="Left" Margin="18,71,0,0" VerticalAlignment="Top" Height="25" Width="70" Grid.Column="1" Grid.RowSpan="2" Grid.Row="1"/>
+            <Label x:Name="Copies" Content="Количество(мин.1)" HorizontalAlignment="Left" Margin="284,5,0,0" VerticalAlignment="Top" Height="25" Width="132" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox VerticalAlignment="Top"
+                Margin="193,35,193,0"
+                x:Name="CopiesBox"
+                FontSize="20"
+                Padding="10 0 10 0" Grid.Row="1" Grid.ColumnSpan="2"/>
         </Grid>
 
     </Grid>

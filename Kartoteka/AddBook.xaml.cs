@@ -27,27 +27,32 @@ namespace Kartoteka
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             if (TitleBox.Text.Trim() == "" ||
-                TitleBox_Copy.Text.Trim() == "" ||
-                TitleBox_Copy1.Text.Trim() == "" ||
-                TitleBox_Copy2.Text.Trim() == ""
-                )
+            TitleBox_Copy.Text.Trim() == "" ||
+            TitleBox_Copy1.Text.Trim() == "" ||
+            CopiesBox.Text.Trim() == "" ||
+            TitleBox_Copy2.Text.Trim() == "")
+            {
                 MessageBox.Show("Все поля должны быть заполнены",
-                               "Ошибка",
-                               MessageBoxButton.OK,
-                               MessageBoxImage.Error);
+                "Ошибка",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+            }
             else
             {
                 using (var db = new BAZABBIBLIOTEKAEntities())
                 {
                     if (!db.Books.Any(u => u.Title == TitleBox.Text &&
-                                           u.Author == TitleBox_Copy.Text && u.Year_publication.ToString() == TitleBox_Copy1.Text
-                                                    && u.Genre == TitleBox_Copy2.Text))
+                    u.Author == TitleBox_Copy.Text &&
+                    u.Year_publication.ToString() == TitleBox_Copy1.Text &&
+                    u.Genre == TitleBox_Copy2.Text))
                     {
                         Books books = new Books();
                         books.Title = TitleBox.Text.Trim();
                         books.Author = TitleBox_Copy.Text.Trim();
                         books.Year_publication = Convert.ToInt32(TitleBox_Copy1.Text);
                         books.Genre = TitleBox_Copy2.Text.Trim();
+                        books.Copies = Convert.ToInt32(CopiesBox.Text.Trim()); // Устанавливаем статус по умолчанию
+
                         db.Books.Add(books);
                         db.SaveChanges();
                         MessageBox.Show("Данные успешно сохранены",
@@ -56,12 +61,16 @@ namespace Kartoteka
                                         MessageBoxImage.Information);
                         this.Close();
                     }
-                    else MessageBox.Show("Такая книга уже существует",
-                                    "Ошибка",
-                                    MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                    else
+                    {
+                        MessageBox.Show("Такая книга уже существует",
+                                        "Ошибка",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Error);
+                    }
                 }
             }
         }
+
     }
 }
